@@ -1,0 +1,28 @@
+import numpy as np
+def sumvec(vector1,vector2):
+    return list(map(sum,zip(vector1,vector2)))
+def InternProduct(vector1,vector2):
+    sum=0
+    for i in range(len(vector1)):
+        sum+=vector1[i]*vector2[i]
+    return sum
+def Proyection(vector1,vector2):
+    return list(map(lambda f:f*(InternProduct(vector1,vector2)/InternProduct(vector2,vector2)),vector2))
+def GramSchimdt(destiny,vectors,k):
+    if(k==len(vectors)):
+        return destiny
+    sumatory=vectors[k]
+    if k!=0:
+        for i in range(k):
+            sumatory=sumvec(sumatory,list(map(lambda x:-1*x,Proyection(vectors[k],destiny[i]))))
+    destiny.append(sumatory)
+    return GramSchimdt(destiny,vectors,k+1)
+print("Ingrese cantidad de vectores",end=" ")
+n=int(input())
+mylist=[]
+for i in range(n):
+    print("Ingrese el vector #"+str(i+1)+" ",end=" ")
+    mylist.append(list(map(int,input().split())))
+newlist=[]
+print("Lista de Vectores normalizados:")
+print(GramSchimdt(newlist,mylist,0))
