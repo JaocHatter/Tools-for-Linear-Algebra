@@ -22,9 +22,7 @@ while abs(a-b) > tol and it < 100:
     sign_fa_fc = "+" if fa * fc > 0 else "-"
     sign_fc_fb = "+" if fc * fb > 0 else "-"
 
-    # Almacenar los datos de la iteración
-    data.append([it, a, b, fa, fb, fc, c, sign_fa_fc, sign_fc_fb])
-
+    
     if fc == 0:
         a = b = c
     elif fa * fc < 0:
@@ -33,6 +31,8 @@ while abs(a-b) > tol and it < 100:
     else:
         a = c
         fa = fc
+    # Almacenar los datos de la iteración
+    data.append([it, a, b, fa, fb, fc, c, sign_fa_fc, sign_fc_fb])
 
     it += 1
 
