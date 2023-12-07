@@ -1,4 +1,3 @@
-# Continuación del código de broyden...
 from numpy import dot, sqrt, array, eye
 from numpy.linalg import solve
 import numpy as np
